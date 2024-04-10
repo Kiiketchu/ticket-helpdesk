@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDMVC", "CRUDMVC\CRUDMVC.csproj", "{79EC8D96-660A-4533-B80E-A369855EB4B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79EC8D96-660A-4533-B80E-A369855EB4B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79EC8D96-660A-4533-B80E-A369855EB4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79EC8D96-660A-4533-B80E-A369855EB4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79EC8D96-660A-4533-B80E-A369855EB4B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC1E53E3-D155-4DA1-BDD0-1DABE18A9815}
+	EndGlobalSection
+EndGlobal

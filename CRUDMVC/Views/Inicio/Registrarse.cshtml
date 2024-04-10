@@ -1,0 +1,89 @@
+﻿@model CRUDMVC.Models.User;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body style="background-color: #f8f9fa;">
+
+    <div class="container mt-5 pt-5">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+
+                <div class="card">
+                    <div class="card-header" style="background-color: #28a745; color: #fff;">
+                        <h4 class="mb-0">
+                            <i class="fas fa-user-plus"></i> Regístrate
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Inicio" asp-action="Registrarse" method="post">
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="background-color: #28a745; color: #fff;">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input class="form-control" type="text" placeholder="Nombre" asp-for="Name" required />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="background-color: #28a745; color: #fff;">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input class="form-control" type="text" placeholder="Apellido" asp-for="Lastname" required />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="background-color: #28a745; color: #fff;">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input class="form-control" type="text" placeholder="Nombre de usuario" asp-for="Username" required />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="background-color: #28a745; color: #fff;">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input class="form-control" type="text" placeholder="Correo" asp-for="Email" required />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="background-color: #28a745; color: #fff;">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input class="form-control" type="password" placeholder="Contraseña" asp-for="Password" required />
+                            </div>
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-success" type="submit">
+                                    <i class="fas fa-user-plus"></i> Regístrate
+                                </button>
+                            </div>
+                            @if (ViewData["Mensaje"] != null)
+                            {
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Mensaje"]
+                                    </div>
+                                </div>
+                            }
+                            ¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion", "Inicio")">Iniciar Sesión</a>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

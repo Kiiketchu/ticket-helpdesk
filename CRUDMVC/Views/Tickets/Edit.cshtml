@@ -1,0 +1,119 @@
+﻿@model CRUDMVC.Models.Ticket
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar ticket</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="UpdatedAt" class="control-label"></label>
+            <input asp-for="UpdatedAt" class="form-control" />
+            <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="KindId" class="control-label"></label>
+                <select asp-for="KindId" class="form-control" asp-items="ViewBag.KindId"></select>
+                <span asp-validation-for="KindId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="AsignedId" class="control-label"></label>
+            <input asp-for="AsignedId" class="form-control" />
+            <span asp-validation-for="AsignedId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriorityId" class="control-label"></label>
+                <select asp-for="PriorityId" class="form-control" asp-items="ViewBag.PriorityId"></select>
+                <span asp-validation-for="PriorityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusId" class="control-label"></label>
+                <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                <span asp-validation-for="StatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<h2>Bitácora</h2>
+@if (Model.TicketLogs != null && Model.TicketLogs.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Comentario</th>
+                <th>Fecha de actualización</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model.TicketLogs)
+            {
+                <tr>
+                    <td>@log.Id</td>
+                    <td>@log.Comment</td>
+                    <td>@log.ModificationDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay registros en la bitácora para este ticket.</p>
+}
+
+<h2>Agregar a la bitácora</h2>
+<form asp-action="AddToLog" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="Message">Mensaje</label>
+        <input type="text" class="form-control" id="Comment" name="Comment" />
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+
+
+<div>
+    <a asp-action="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
